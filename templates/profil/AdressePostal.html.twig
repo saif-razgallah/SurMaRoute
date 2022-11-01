@@ -1,0 +1,93 @@
+{% extends 'profil.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+{% endblock %}
+
+{% block conat %}
+
+
+					 <!-- Message Errors/Success-->	
+						{{include('profil/ScriptMsg.html.twig')}}
+
+
+
+						<!-- Update  Adressse Postal --> 
+
+		            		<div class="col-md-12 offset-0">
+		            		            	
+			            	  <div class="panel panel-default">
+			            	  	<div class="panel-heading"><h6 class="panel-title">Adresse postal</h6></div>
+								
+								<div class="panel-body" style="padding : 30px 30px 30px 30px;">		
+
+								 {{form_start(form)}}
+		          							            
+										<!-- Adresse -->
+										<div class="form-group has-feedback">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+												
+												{{ form_widget(form.adresse, {'attr':{'placeholder':'Numéro et nom de rue'}})}}
+			    							</div>
+			    							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										</div>
+									
+										
+										<!-- Code postal -->
+										<div class="form-group has-feedback">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+												
+												{{ form_widget(form.code_postal,{'attr':{'placeholder':'Code postal'}})}}
+			    							</div>
+			    							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										</div>
+									
+										
+										<!-- Ville -->
+										<div class="form-group has-feedback">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+												
+
+												{{ form_widget(form.ville,{'attr':{'placeholder':'Ville'}})}}
+												
+			    							</div>
+			    							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+			    							
+										</div>
+										
+										
+										<!-- Pays -->
+										
+											<div class="form-group has-feedback">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+													{{ form_widget(form.pays,{'attr':{'placeholder':'Pays'}})}}
+				    							</div>
+				    							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+											</div>
+									</div>
+
+									<!-- Button -->	
+											<div class="panel-footer text-center">
+												<input id="submitForm" type="submit" value="Editer" class="btn btn-success"></input>
+											</div>
+
+								{{ form_widget(form._token) }} <!-- render the CSRF Token-->
+								{{ form_end(form,{'render_rest': false})}}
+								
+							<div>
+							
+						</div>
+						
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}	

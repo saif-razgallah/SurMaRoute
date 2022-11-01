@@ -1,0 +1,254 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style4.css')}}">
+	<!--DateTimePicker-->
+	<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/south-street/jquery-ui.css">
+
+	<!---->
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
+
+
+{% endblock %}
+
+
+{% block body %}
+	
+
+	<div class="espace"></div>
+	
+	<div class="container_searchTrajet">
+		<br>
+			<div class="nouveau101">
+				<h3>Il y'a  <span>{{totalrows}}</span> covoiturages actuellement !</h3>
+			</div>		
+				<div class="bloc_page_bodyy">
+					<div class="bloc_page_load">
+						<div class="n10load">
+
+								<div class="mr74">
+									<div class="loadl">
+
+										{{form_start(form)}}
+
+										<div class="mrr44">
+											
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fas fa-map-marker-alt"></i></span>
+												
+												{{ form_widget(form.villeDepart)}}	
+			    							</div>
+											
+																								   
+										</div>
+
+										<div class="mrr44">
+
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fas fa-map-marker-alt"></i></span>
+											
+											{{ form_widget(form.villeArrivee)}}	
+
+											</div>
+
+										</div>
+
+										<div class="mrr44">
+
+											
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+												{{ form_widget(form.dateDepart)}}
+
+											</div>	
+
+										</div>	
+
+										<input id="search" type="submit" value="chercher" class="trouvezo">
+
+									</div>
+									
+									
+									
+								
+									{{ form_end(form,{'render_rest': false})}}	
+
+								</div>	
+
+						</div> 
+
+					</div>
+
+
+
+							{% for trajet in trajets %}
+							<!-- Début -->
+							<div class="sectionn">
+
+									<!-- Partie Gauche-->
+									<div class="choirc1">
+									
+										<a href="{{ path('search_trajet.show', {id: trajet.id})}}">
+											
+											<div class="detrc">
+												<div class="nouvie3">
+													
+												{% if trajet.utilisateur.photo == null  %}
+													<img class="imge" src="{{asset('images/search/imgprofil.png')}}">
+												{% else %}	
+				                                 <img class="imge" src="{{asset('uploads/') ~ trajet.utilisateur.photo}}">
+				                                {% endif %}
+
+												</div>
+												<p class="prixnuit">
+													<br><strong>{{trajet.utilisateur.prenom}}<br><span>
+													{{ date('now'|date('d-m-Y')).diff(date(trajet.utilisateur.date_naissance|date('d-m-Y'))).format('%y ans') }}
+													</span></strong>
+														
+												</p>
+				
+												<p class="prixnuit2">
+													{{trajet.type_utilisateur}}
+													<br>
+													
+												</p>
+											</div>
+											
+											<div class="destrcco">
+											
+												<div class="detrc">
+													<p><img src="/images/search/star2c.png" alt="">&nbsp;
+														<strong>
+														
+															{% set note = 0 %}
+															{% set nbr = 0 %}	
+		                        
+									                        {% for avis_user in avis_util %}	
+																
+															 {% if avis_user.estNote.id == trajet.utilisateur.id %}	
+															 {% if avis_user.avis == "A éviter" %}
+																{% set note = note + 1  %}
+																{% set nbr = nbr + 1  %}	
+															 {% endif %}
+
+															 {% if avis_user.avis == "Décevant" %}
+																{% set note = note + 2 %}
+																{% set nbr = nbr + 1  %}		
+															 {% endif %}
+
+															 {% if avis_user.avis == "Bien" %}
+							 									{% set note = note + 3  %}
+							 									{% set nbr = nbr + 1  %}		
+															 {% endif %}
+
+															 {% if avis_user.avis == "Excellent" %}
+																{% set note = note + 4 %}
+																{% set nbr = nbr + 1  %}		
+															 {% endif %}
+
+															 {% if avis_user.avis == "Extraordinaire" %}
+																{% set note = note + 5 %}
+																{% set nbr = nbr + 1  %}		
+															 {% endif %}	
+															 {% endif %}
+									                        
+									                    	{% endfor %}
+
+									                    	{% if note > 0 %}
+									                    	
+									                    	{{ ((note / nbr) + 0.0)|number_format(1)}}
+									                    	{% else %}
+									                    	{{ (note  + 0.0)|number_format(1)}}
+									                    	{% endif %}	
+
+														</strong></p>
+												</div>
+												
+												<div class="detrc">
+												</div>
+												<div class="detrc">
+													<p><img src="/images/search/car_small.png" alt="">&nbsp;<strong>{{trajet.utilisateur.profil.marque_voiture}}</strong></p>
+												</div>
+											</div>
+										  
+										</a>
+									</div>
+
+									<div class="rc">
+									
+										<a href="#">
+											<div class="nouveau1">
+												<div class="nouvie1">
+													<p>{{trajet.ville_depart}}</p>
+												</div>
+												<div class="nouvie2">
+													<img src="/images/search/fleche_2.png" alt="vers">
+												</div>
+												<div class="nouvie1">
+													<p>{{trajet.ville_arrivee}}</p>
+												</div>
+											</div>
+										</a>
+										
+										<div class="nouveau2">
+											<article>
+												<a href="#">
+													 <h1>
+													 Le{{(trajet.date_depart|date(' d/m/Y à'))}}
+													 {{(trajet.heure_depart|date('H\\hi'))}}
+													</h1>
+												</a>
+												<p>{{trajet.description}}</p>
+											</article>
+										</div>
+										
+									</div>
+									
+									<div class="choirc">
+										<div class="detrc">
+											<p class="prixnuito">
+												<strong>{{trajet.prix}}</strong> Dinars
+											</p>
+										</div>
+										<div class="detrc1">
+											<p><strong>{{trajet.nbr_place}}</strong> places<br></p>
+										</div>
+									</div>
+							   
+							</div>
+							{% endfor %}
+
+								{# display navigation #}
+								<div class="navigation">
+								    {{ knp_pagination_render(trajets) }}
+								</div>
+					   
+						<!-- Fin -->
+				   
+				</div>		
+			<hr>
+			<br>
+			<br>
+
+	</div>
+
+	{{include('footer/footer.html.twig')}}
+
+	
+
+{% endblock %}
+
+
+{% block javascripts %}
+	
+	   <!--DateTimePicker-->
+    		<script src="{{asset('js/vendors/jquery-ui.min.js')}}"></script>
+            <script src="{{asset('js/calendar/calendar.js')}}"></script>
+
+  		 <!-- /DateTimePicker-->
+
+{% endblock %}
+

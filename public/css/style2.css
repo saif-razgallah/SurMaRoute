@@ -1,0 +1,238 @@
+
+/*-------------------------------  registartion.html.twig ----------------------------------*/
+
+
+.espace{
+	height:  150px;
+		background-color: #ffffff;
+
+}
+
+header{
+  background-color: rgb(0,0,0,0.9);
+}
+
+
+.panel-default .panel-body .captcha{
+	padding-top:30px;
+	padding-bottom:50px;
+}
+
+.test2{
+	height: 200px;
+}
+
+/*------------------------------- Profil.html.twig ----------------------------------------*/
+
+
+section
+	{
+	 padding: 100px 0 !important;
+    }
+
+.user-profile 
+	{
+	margin: 20px 20px 20px 20px;
+	}
+
+.facet-icon 
+	{ 
+	margin-right:10px; 
+	}
+
+.panel-collapse{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    /*color: #333;*/
+}
+
+.panel-collapse .list-group-item{
+    color: black;
+	text-decoration: none;
+}
+
+
+.panel-heading .panel-title a 
+	{
+	color: black;
+	text-decoration: none;
+	}
+		
+.facet-panel 
+	{
+     margin: 0 0 20px !important;
+	}
+		
+.starts {
+	list-style: outside none none;
+	margin: 0;
+	padding: 0;
+		}
+		
+.starts li {
+    display: inline-block;
+    font-size: 1.6rem;
+
+}
+		
+.starts a span {
+    font-size: 1.6rem;
+}
+		
+.imge
+{
+    border-radius: 6px;
+	border: 1px solid #ddd;
+    width: 128px;
+    height: 128px;
+
+}
+
+.row .card-image {
+  border: 2px solid #bdc3c7;
+  border-radius: 6px;
+  width: 135px;
+  height: 133px;
+  float: right;
+  vertical-align: top;
+  overflow:hidden;
+  padding: 1px;
+  }
+
+	
+/* Dashboard section*/
+.huge {
+				
+	 font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;	
+	 font-size: 40px;
+}
+
+.panel-green {
+		  border-color: #5cb85c;
+}
+		.panel-green .panel-heading {
+		    background-color: #5cb85c;
+		    border-color: #5cb85c;
+		    color: #fff;
+		}
+		.panel-green a {
+		    color: #5cb85c;
+		}
+		.panel-green a:hover {
+		    color: #3d8b3d;
+		}
+		.panel-red {
+		    border-color: #d9534f;
+		}
+		.panel-red .panel-heading {
+		    background-color: #d9534f;
+		    border-color: #d9534f;
+		    color: #fff;
+		}
+		.panel-red a {
+		    color: #d9534f;
+		}
+		.panel-red a:hover {
+		    color: #b52b27;
+		}
+		.panel-yellow {
+		    border-color: #f0ad4e;
+		}
+		.panel-yellow .panel-heading {
+		    background-color: #f0ad4e;
+		    border-color: #f0ad4e;
+		    color: #fff;
+		}
+		.panel-yellow a {
+		    color: #f0ad4e;
+		}
+		.panel-yellow a:hover {
+		    color: #df8a13;
+		}
+
+.panel-footer .btn{
+	padding: 6px 60px;
+	
+}		
+
+/*--------------------------------------- Préférence  ---------------------------*/
+
+.box {
+    background-color: #f3efef;
+    border-radius: 5px;
+    box-shadow: none;
+    margin-bottom: 20px;
+    padding: 20px;
+    min-height: 210px;
+    width: 420px;
+    border: 1px solid #D3D3D3;
+
+}
+
+.header_box {
+    background-color: #e2dfe0;
+    font-size: 14px;
+    padding: 20px 10px 20px 20px;
+    color: #1F1F1F;
+    font-weight: 500;
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 25px;
+    font-family: "helvetica", "Arial", sans-serif;
+}
+
+.tabac{
+	margin-top: -10px;
+	}  
+
+.bavardage{
+	margin-top: -10px;
+	}	
+
+.animaux{
+	margin-top: -10px;
+	}
+
+.musique{
+	margin-top: -10px;
+	} 
+
+
+	
+
+
+
+.form-check-input {
+    display: inline-block;
+    display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(square.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* --------------------------------maps----------------------------*/
+
+.map { 
+	height: 800px; 
+	width: 400px;
+}
+
+
+.img[src="http://api.mqcdn.com/icons/multi-pin-a.png"] { 
+    visibility:hidden; 
+}
+
+ /*.leaflet-marker-icon{ visibility:hidden; }*/
+
+.leaflet-marker-draggable{
+	visibility:hidden;
+}

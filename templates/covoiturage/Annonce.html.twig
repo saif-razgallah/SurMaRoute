@@ -1,0 +1,150 @@
+	{% if  annonces == null %}
+				
+	<div class="panel panel-default" >
+	  
+	  <div class="panel-body" style="width:600px;">
+		<div class="alert alert-info">Aucune annonce en cours</div>
+	  </div>
+
+	</div>
+
+	{% else %}
+	<div class="panel panel-default" style="padding: 10px">
+
+		<div class="panel-body">
+		    {% for annonce in annonces %}
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			  
+				<div class="panel panel-default">
+			
+
+					<div class="panel-heading" role="tab" id="heading25" style="background-color: #ffffff">
+						
+						<h4 class="panel-title">
+
+							<a data-toggle="collapse" data-parent="#accordion" href="#{{annonce.id}}" aria-expanded="true" aria-controls="collapse25">
+
+								<span class="color-green glyphicon glyphicon-map-marker"></span>
+								{{annonce.villedepart}} <small></small>
+								<span class="glyphicon glyphicon-chevron-right text-primary"></span>
+								<span class="color-red glyphicon glyphicon-map-marker"></span>
+								{{annonce.villearrivee}} <small><br></small>
+								<small style="padding-left: 25px; color: #34495e; color: #34495e">
+																	
+										Le{{(annonce.datedepart|date(' d/m/Y à'))}}
+										{{(annonce.heuredepart|date('H\\hi'))}}
+								</small>
+								
+							</a>
+							<small style="padding-left: 25px; color: #34495e; color: #34495e">
+								<a href="{{path('search_trajet.show',{id: annonce.id})}}" class="btn-xs btn-default pull-right">
+									<span class="glyphicon glyphicon-plus color-blue"></span>
+								</a>
+							</small>
+					    </h4>
+					</div>
+							
+					<div id="{{annonce.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading25" style="">
+						<div class="panel-body">
+
+							   <strong>Les membres inscrits à ce covoiturage</strong>
+
+							   {% set Trouve1 = false %}
+
+							    <table class="table table-hover">
+								    <thead></thead>
+
+								    <tbody>
+
+									    {% for TousLesReservation in TousLesReservations %}
+									
+										{% if  TousLesReservation.trajet.id == annonce.id and TousLesReservation.statut == 'En Attente' %}
+
+											{%  set Trouve1 = true %}
+
+										<tr>
+										  <td>
+										  	<a href="{{path('search_profil.show',{id: TousLesReservation.utilisateur.id})}}" class="aa">{{TousLesReservation.utilisateur.prenom}}</a>
+										  </td>
+										  <td><a href="{{path('search_profil.show',{id: TousLesReservation.utilisateur.id})}}" class="aa">{{TousLesReservation.utilisateur.nom}}</a></td>
+										  <td><a href="{{path('search_profil.show',{id: TousLesReservation.utilisateur.id})}}" class="aa">{{ date('now'|date('d-m-Y')).diff(date(TousLesReservation.utilisateur.datenaissance|date('d-m-Y'))).format('%y ans') }}</a></td>
+										  <td>
+											<a href="{{path('covoiturage.accepter',{id: TousLesReservation.id})}}" class=" btn btn-xs btn-success">Accepter</a>
+											<a href="{{path('covoiturage.refuser',{id: TousLesReservation.id})}}" class=" btn btn-xs btn-danger" >Refuser</a>
+										  </td>
+										</tr>
+
+										{% endif %}
+										{% endfor %}
+
+								    </tbody>
+							    </table>
+							    {% if Trouve1 == false %}
+
+									<div class="panel-body" style="width:570px;">
+									   <div class="alert alert-info " style="text-align:center">aucun membre inscrit à ce covoiturage</div>
+								    </div>
+
+								{% endif %}	
+
+							    
+
+
+							   <strong>Les passager de ce covoiturage</strong>
+
+								{% set Trouve2 = false %}
+
+							   	
+
+							    <table class="table table-hover">
+								    <thead></thead>
+								    <tbody>
+
+								    	{% for TousLesReservation in TousLesReservations %}
+
+										{% if  TousLesReservation.trajet.id == annonce.id and TousLesReservation.statut == 'Confirme' %}
+
+										{%  set Trouve2 = true %}
+
+										<tr>	
+											  <td>{{TousLesReservation.utilisateur.prenom}}</td>
+											  <td>{{TousLesReservation.utilisateur.nom}}</td>
+											  <td>{{ date('now'|date('d-m-Y')).diff(date(TousLesReservation.utilisateur.datenaissance|date('d-m-Y'))).format('%y ans') }}</td>
+											  <td>
+												<a href="{{path('search_profil.show',{id: TousLesReservation.utilisateur.id})}}" class=" btn btn-xs btn-primary">
+													voir le profil <span class=" glyphicon glyphicon-chevron-right"></span>
+												</a>
+											  </td>
+										</tr>
+
+										{% endif %}
+										{% endfor %}
+
+									</tbody>
+							    </table>
+							    
+
+								{% if Trouve2 == false %}
+
+									<div class="panel-body" style="width:570px;">
+									   <div class="alert alert-info " style="text-align:center">Ce covoiturage n'a pas de passager</div>
+								    </div>
+
+								{% endif %}	
+							   
+							   <a href="#" class=" btn btn-xs btn-success link-blanc">Editer </a>
+								
+								<form method="post" action="{{path('covoiturage.delete',{id: annonce.id})}}" style="display: inline-block" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?')">
+									<input type="hidden" name="_method" value="DELETE">
+									<button class=" btn btn-xs btn-danger link-blanc btn-group-justified">Supprimer l'annonce <span class=" glyphicon glyphicon-chevron-right"></span></button>
+								</form>
+
+						</div>
+					</div>
+				</div>
+			  	
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+    {% endif %}

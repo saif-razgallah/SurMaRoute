@@ -1,0 +1,114 @@
+	{% if  historique_reservations == null %}
+				
+	<div class="panel panel-default" >
+	  
+	  <div class="panel-body" style="width:600px;">
+		<div class="alert alert-info">Aucune réservation dans votre historique</div>
+	  </div>
+
+	</div>
+
+	{% else %}
+
+<div class="panel panel-default" style="padding: 10px">
+
+	    <div class="panel-body">
+
+	    	{% for historique_reservation in historique_reservations %}
+
+				<div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+
+					<div class="panel panel-default">
+
+					<div class="panel-heading" role="tab" id="heading19" style="background-color: #ffffff">
+							
+							<h4 class="panel-title">
+
+							 	<a data-toggle="collapse" data-parent="#accordion5" href="#33{{historique_reservation.id}}" aria-expanded="true" aria-controls="collapse19" class="collapsed">
+
+									<span class="color-green glyphicon glyphicon-map-marker"></span>
+									{{historique_reservation.trajet.villedepart}} <small></small>
+									<span class="glyphicon glyphicon-chevron-right text-primary"></span>
+									<span class="color-red glyphicon glyphicon-map-marker"></span>
+									{{historique_reservation.trajet.villedepart}} <small><br></small>
+									<small style="padding-left: 25px; color: #34495e; color: #34495e">
+										Le{{(historique_reservation.trajet.datedepart|date(' d/m/Y à'))}}
+										{{(historique_reservation.trajet.heuredepart|date('H\\hi'))}}
+									</small>
+								</a>
+								<small style="padding-left: 25px; color: #34495e; color: #34495e">
+									<a href="{{path('search_trajet.show',{id: historique_reservation.trajet.id})}}" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-plus color-blue"></span></a>
+								</small>
+							</h4>
+						</div>
+					
+						<div id="33{{historique_reservation.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19" style="height: 0px;">
+						  
+						    <div class="panel-body">
+
+							  <strong>Le conducteur de ce covoiturage</strong>
+							  <table class="table table-hover">
+								<thead></thead>
+								<tbody>
+
+									{% for TousLesUtilisateur in TousLesUtilisateurs %}
+									
+										{% if  TousLesUtilisateur.id == historique_reservation.trajet.utilisateur.id %}
+
+										<tr>
+										  <td>{{TousLesUtilisateur.prenom}}</td>
+										  <td>{{TousLesUtilisateur.nom}}</td>
+										  <td>{{ date('now'|date('d-m-Y')).diff(date(TousLesUtilisateur.datenaissance|date('d-m-Y'))).format('%y ans') }}</td>
+										  <td>
+											  
+											<a href="{{path('search_profil.show',{id: TousLesUtilisateur.id})}}" class=" btn btn-xs btn-inverse">
+											Laisser un avis <span class=" glyphicon glyphicon-chevron-right"></span>
+											</a>
+
+										  </td>
+									    </tr>
+									
+									{% endif %}
+								    {% endfor %}
+
+								  
+								</tbody>
+							  </table>
+
+							  <strong>Les passagers de ce covoiturage</strong>
+							  <table class="table table-hover">
+								  <thead></thead>
+								  <tbody>
+									
+									{% for TousLesReservation in TousLesReservations %}
+									
+										{% if  TousLesReservation.trajet.id == historique_reservation.trajet.id  and TousLesReservation.statut == 'Confirme' and app.user.id != TousLesReservation.utilisateur.id %}
+
+										<tr>
+										  <td>{{TousLesReservation.utilisateur.prenom}}</td>
+										  <td>{{TousLesReservation.utilisateur.nom}}</td>
+										  <td>{{ date('now'|date('d-m-Y')).diff(date(TousLesReservation.utilisateur.datenaissance|date('d-m-Y'))).format('%y ans') }}</td>
+										  <td>
+									
+											<a href="{{path('search_profil.show',{id: TousLesReservation.utilisateur.id})}}"class=" btn btn-xs btn-invers">
+												Voir le profil  <span class=" glyphicon glyphicon-chevron-right"></span>
+											</a>							
+											
+										  </td>
+									    </tr>
+									
+									{% endif %}
+								    {% endfor %}
+
+								  </tbody>
+							      </table>
+
+						    </div>
+					    </div>
+				    </div>
+				    
+				</div>
+			{% endfor %}	
+		</div>
+</div>
+{% endif %}

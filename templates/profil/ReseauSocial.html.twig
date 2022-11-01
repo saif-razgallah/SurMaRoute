@@ -1,0 +1,102 @@
+{% extends 'profil.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+{% endblock %}
+
+{% block conat %}
+
+	<!-- profil -->
+
+					 
+
+						{{include('profil/ScriptMsg.html.twig')}}
+
+						<!-- Update personal data --> 
+
+		            	<div class="col-md-12 offset-0">
+
+		            		<div class="panel panel-default">
+			            	
+			            		<div class="panel-heading"><h6 class="panel-title">Vos profils de réseaux sociaux facilitent les prises de contact entre covoitureurs</h6></div>
+
+								
+								<div class="panel-body" style="padding : 30px 30px 30px 30px;">
+									
+									{{form_start(form)}}
+
+										<!-- Facebook -->
+										<div class="form-group has-feedback">
+											<div class="input-group">
+												<span class="input-group-addon btn-facebook" style="font-size: 1em;"><i class="fa fa-facebook-official"></i></span>
+												<span class="input-group-addon">https://www.facebook.com/</span>
+
+												{{ form_widget(form.identifiant_facebook, {'attr':{'placeholder':'Nom utilisateur Facebook'}})}}
+
+										
+			    							</div>
+			    							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										</div>
+										
+										
+										<!-- Twitter -->
+										<div class="form-group has-feedback">
+											<div class="input-group">
+												<span class="input-group-addon btn-twitter" style="font-size: 1em;"><i class="fa fa-twitter"></i></span>
+												<span class="input-group-addon">https://www.twitter.com/</span>
+
+												{{ form_widget(form.identifiant_twitter, {'attr':{'placeholder':'Identifiant Twitter'}})}}
+
+											
+			    							</div>
+			    							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										</div>
+										
+										
+										<!-- Instagram -->
+										<div class="form-group has-feedback">
+											<div class="input-group">
+												<span class="input-group-addon btn-instagram" style="font-size: 1em;"><i class="fa fa-instagram"></i></span>
+												<span class="input-group-addon">https://www.instagram.com/</span>
+
+												{{ form_widget(form.identifiant_instagram, {'attr':{'placeholder':'Identifiant Instagram'}})}}
+
+			    							</div>
+			    							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										</div>
+										
+
+									</div>
+									
+									<!-- Button -->	
+											<div class="panel-footer text-center">
+												<input id="submitForm" type="submit" value="Editer" class="btn btn-success"></input>
+											</div>
+											
+									{{ form_widget(form._token) }} <!-- render the CSRF Token-->
+									{{ form_end(form,{'render_rest': false})}}		
+								
+							
+									
+							</div>
+		            		            	
+			            	  
+						</div>
+						
+
+	<!-- /profil -->
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+	        <!--DateTimePicker-->
+    		<script src="{{asset('js/vendors/jquery-ui.min.js')}}"></script>
+            <script src="{{asset('js/main.js')}}"></script>
+
+   		 <!-- /DateTimePicker-->
+
+{% endblock %}	

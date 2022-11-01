@@ -1,0 +1,32 @@
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+{% endblock %}
+
+{% block conat %}
+
+
+					 
+
+								{{form_start(form)}}
+		          							            
+										
+								{{ form_widget(form.contenu,{'attr':{'placeholder':'contenu'}})}}
+				    							
+								<input id="submitForm" type="submit" value="Créer mon compte" class="btn btn-success btn-block"></input>
+								
+								{{ form_widget(form._token) }} <!-- render the CSRF Token-->
+								{{ form_end(form,{'render_rest': false})}}
+								
+							<div>
+							
+						</div>
+						
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}	

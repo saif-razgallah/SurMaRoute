@@ -1,0 +1,332 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+
+{% block stylesheets %} 
+
+			<!--DateTimePicker-->
+               <link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/south-street/jquery-ui.css">
+
+            <!---->
+{% endblock %}
+
+{% block body %}
+
+	<!-- Home -->
+		<section class="sections home text-center">
+					<div class="container">
+						<video class="video-bg" autoplay muted loop>
+          					 <source src="{{asset('images/home/footage2.mp4')}}" type="video/mp4"> 
+          				 </video>
+
+						<div class="home-content">
+
+							<h3 class="home-title">TROUVEZ UN COVOITURAGE</h3>
+							<p class="lead home-desc">Covoiturez sur tous vos types de trajets sans aucune commission</p>
+							{{form_start(form,{ 'action' : path ("search_trajet"), 'method' : 'get' })}}
+							<div class="wrapper">
+								
+								 
+								 {{ form_widget(form.villeDepart,{'attr':{'placeholder':'Lieu de départ','class':'inputdepart'}})}}
+
+								
+								{{ form_widget(form.villeArrivee,{'attr':{'placeholder':"Lieu d'arrivée",'class':'inputarrive'}})}}
+
+								{{ form_widget(form.dateDepart,{'attr':{'placeholder':'Date','class':'js-datepicker','format':'dd-MM-yyyy',}})}}
+								
+
+								<button type="submit" tabindex="3" class="btn btn-default" 
+								id="rechercher">
+								  <i class="fa fa-search"></i>
+								</button>
+								
+								{{ form_end(form,{'render_rest': false})}}
+							</div>	
+						</div>
+
+					</div>
+					 
+		</section>
+
+		<!-- /home-->
+
+		<!-- Avantage-->
+
+		<section class="sections avantage">
+			<div class="container">
+				<div class="section-header text-center">
+					<h2 class="section-title">AVANTAGES</h2>
+					<div class="line"><span></span></div>
+
+					<p>Profitez pleinement des avantages du covoiturage</p>
+				</div>
+
+				<div class="row text-center">
+
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="circle fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-money fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Sur ma Route : Solution économique</h4>
+                    <p class="text-muted">Le partage des frais de voyage permet de voyager à petit prix</p>
+                </div>
+
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="circle fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-heartbeat fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Sur ma Route : Solution écologique et pratique</h4>
+                    <p class="text-muted">La réduction du trafic routier permet de fluidifier la circulation et réduire les émissions de CO2, et également de pouvoir voyager à n'importe quel moment et lieu </p>
+                </div>
+
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="circle fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Sur ma Route : Site sécurisé</h4>
+                    <p class="text-muted">Le site propose une connexion fiable et sécurisée et respecte la confidentialité des utilisateurs</p>
+                </div>
+
+            </div>
+			</div>
+			</div>
+
+		</section>
+
+		<!-- /Avantage -->
+
+		<!-- Consigne-->
+			<section class="sections consigne">
+			<div class="container">
+				<div class="section-header text-center">
+					<h2 class="section-title">CONSIGNES</h2>
+					<div class="line"><span></span></div>
+
+					<p>Votre sécurité est une des préoccupations essentielles,Nous vous remercions de respecter les consignes.</p>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-xs-12">
+						<div class="serv">
+						<img class="fa fa-bolt big-icon pull-right" src="{{asset('images/consigne/speed.png')}}">
+							<h3 class="t serv-title">Vitesse</h3>
+							<p class="serv-desc">Respectez les gens qui n’aiment pas l’excès de vitesse.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xs-12">
+						<div class="serv">
+						<img class="fa fa-bolt big-icon pull-right" src="{{asset('images/consigne/places.png')}}">
+							<h3 class="serv-title">Nombre de place</h3>
+							<p class="serv-desc">Quatre places maximum dans une voiture pour garder un
+						minimum de confort.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xs-12">
+						<div class="serv">
+						<img class="fa fa-bolt big-icon pull-right" src="{{asset('images/consigne/bagagee.png')}}">
+							<h3 class="c serv-title">Bagage</h3>
+							<p class="serv-desc">Déclarer vos bagages pour que le conducteur les prend en
+						considération</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xs-12">
+						<div class="serv">
+						<img class="fa fa-bolt big-icon pull-right" src="{{asset('images/consigne/maison.png')}}">
+							<h3 class="serv-title">Retour à la maison</h3>
+							<p class="serv-desc">Ne pas demander au chauffeur de vous transporter jusqu’à la porte de votre maison.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xs-12">
+						<div class="serv">
+						<img class="fa fa-bolt big-icon pull-right" src="{{asset('images/consigne/time.png')}}">
+							<h3 class="serv-title">Rendez-vous</h3>
+							<p class="serv-desc">Respectez vos rendez-vous, ne laissez pas les autres vous
+						attendre.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xs-12">
+						<div class="serv">
+						<img class="fa fa-bolt big-icon pull-right" src="{{asset('images/consigne/friends.png')}}">
+							<h3 class="p serv-title">Respect</h3>
+							<p class="serv-desc">Respectez vos compagnons.</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+
+		<!-- /Consigne -->
+
+		<!-- Comment ça marche -->
+
+		<section class="sections usage" id="section1">
+				<div class="section-header text-center">
+						<h2 class="section-title">COMMENT ÇA MARCHE ?</h2>
+						<div class="line"><span></span></div>
+
+						<p>Simple comme bonjour !</p>
+				</div>
+			<section id="cd-timeline" class="cd-container">
+			<div class="cd-timeline-block">
+				
+				<div class="cd-timeline-img cd-picture">
+					<img src="{{asset('images/comment-ça-marche/1.jpg')}}" >
+				</div> <!-- cd-timeline-img -->
+
+				<div class="cd-timeline-content">
+					<h2>STEP 1</h2>
+					<h2 >Créer votre profil</h2>
+					<p>Sur ma Route offre un endroit sécurisé pour gérer en toute tranquilité vos données personnelles et vos covoiturages.</p>
+					
+				</div> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-movie">
+					<img src="{{asset('images/comment-ça-marche/2.jpg')}}">
+				</div> <!-- cd-timeline-img -->
+
+				<div class="cd-timeline-content">
+					<h2>STEP 2</h2>
+					<h2>Cherche un covoiturage (Conducteur ou passager)</h2>
+					<p>Sur ma Route simplifie la mise en relation entre conducteurs et passagers</p>
+				</div> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-picture">
+					<img src="{{asset('images/comment-ça-marche/3.jpg')}}">
+				</div> <!-- cd-timeline-img -->
+
+				<div class="cd-timeline-content">
+					<h2>STEP 3</h2>
+					<h2>Le covoiturage en toute liberté</h2>
+					<p>Trouver le covoiturage qui correspond à tous vos critères</p>
+				</div> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-location">
+					<img src="{{asset('images/comment-ça-marche/4.jpg')}}">
+				</div> <!-- cd-timeline-img -->
+
+				<div class="cd-timeline-content">
+					<h2>STEP 4</h2>
+					<h2>Partager les frais du voyage</h2>
+					<p>Répartir les frais du voyage (carburant, péage) entre l'ensemble des covoitureurs</p>
+				</div> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-location">
+					<img src="{{asset('images/comment-ça-marche/5.jpg')}}">
+				</div> <!-- cd-timeline-img -->
+
+				<div class="cd-timeline-content">
+					<h2>STEP 5</h2>
+					<h2>Apprécier l'expérience</h2>
+					<p>Laisser un commentaire pour remercier vos covoitureurs de l'expérience enrichissante que vous venez de vivre</p>
+				</div> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-movie">
+					<img src="{{asset('images/comment-ça-marche/logo3.png')}}">
+				</div> <!-- cd-timeline-img -->
+
+				<!--div class="cd-timeline-content">
+					<h2>Final Section</h2>
+					<p>This is the content of the last section</p>
+				</div--> <!-- cd-timeline-content -->
+			</div> <!-- cd-timeline-block -->
+			</section> <!-- cd-timeline -->
+		</section>
+
+
+
+		<!-- /Comment ça marche -->
+
+		<!-- Social media Section -->
+
+		<section class="sections social-media">
+			<div class="container">
+				<div class="section-header text-center">
+					<h2 class="section-title">SUIVEZ-NOUS SUR LES RÉSEAUX SOCIAUX</h2>
+					<div class="line"><span></span></div>
+				</div>
+
+				<div class="row text-center">
+
+					<!--Instagram-->
+					<!--div class="col-md-4 g" style="margin-top: 10px;">
+
+						<div class='sk-instagram-feed' data-embed-id='36410'></div><script src='https://www.sociablekit.com/app/embed/instagram-feed/widget.js'></script>
+					
+					</div-->
+						
+					
+					<!-- Facebook Page Plugin-->
+					<div class="col-md-4" style="margin-top: 10px;">
+						
+						<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FEPI-Sousse-Ecole-Pluridisciplinaire-Internationale-1609857752597726%2F%3Fepa%3DSEARCH_BOX&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+						
+						
+					</div>	
+
+					<!-- Twitter-->
+					<div class="col-md-4" style="margin-top: 10px;">
+
+						
+
+						<a class="twitter-timeline" data-width="350" data-height="520" data-theme="light" href="https://twitter.com/ECOLE_PRIVEE?ref_src=twsrc%5Etfw">Tweets by ECOLE_PRIVEE</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+						
+						
+					</div>
+
+				</div>
+				
+				
+			</div>
+		</section>
+
+		<!-- /Social media Section -->
+
+		<!-- Footer -->
+			{{include('footer/footer.html.twig')}}
+
+		<!-- /Footer -->
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+		<!--Script Media-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+  			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+		<!-- /Script Media-->
+		
+
+        <!--DateTimePicker-->
+    		<script src="{{asset('js/vendors/jquery-ui.min.js')}}"></script>
+            <script src="{{asset('js/calendar/calendar.js')}}"></script>
+
+   		 <!-- /DateTimePicker-->
+			
+			<script src="{{asset('js/main.js')}}"></script>
+
+{% endblock %}
+

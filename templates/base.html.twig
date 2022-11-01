@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        {% block stylesheets %}
+        {% endblock %}
+           <link rel="stylesheet" type="text/css" href="{{asset('css/vendors/bootstrap.css')}}">
+           <link rel="stylesheet" type="text/css" href="{{asset('css/vendors/font-awesome.min.css')}}">
+           <link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+           <!-- Script for fontawesome 4.7 or 5 -->
+           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"/>
+           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+      
+    <header>
+
+       <div class="container">
+         <div class="row">
+                      <div class="col-lg-3">
+                        <div class="logo">
+                          <a href="{{path('home')}}"><h2>Sur ma Route</h2></a>
+                        </div>
+                      </div>
+            <nav class="navbar navbar-default col-lg-9">
+           
+                <ul class="nav navbar-nav navbar-right niveau1 MT15 MR15">
+                                           
+                    <li class="list"><a href="{{path('search_trajet')}}" ><i class="fa fa-search"></i></i></i>Chercher</a></li>
+                          
+                    
+                          
+                    {% if not app.user %}
+
+                      <li class="list"><a href="#section1"><i class="far fa-question-circle"></i></i></i>Comment Ça Marche</a></li>  
+                      <li class="list"><a href="{{path('security_registration')}}"><i class="fa fa-pencil-square-o"></i>Inscription</a></li>
+                      <li class="list"><a data-toggle="modal" href="#loginModal"><i class="fa fa-user-o"></i>Connexion</a></li>
+
+                    {% else %}
+                      <li class="list"><a href="{{path('trajet.new')}}"><i class="fa fa-plus-circle"></i></i></i>Proposer</a></li>
+                      <li class="list"><a href="{{path('contact')}}"><i class="fas fa-envelope"></i>Ma Messagerie</a></li> 
+                      <li class="dropdown"><a href="#" class="login-banner-elements connecte dropdown-toggle"  id="login" data-id="464500" title="{{app.user.prenom|striptags|title}} {{app.user.nom|first|upper}}" data-toggle="dropdown" aria-expanded="false">
+                         <i class="fa fa-user-circle-o"></i><span class="text-ellipsis pseudo-header">{{app.user.prenom|striptags|title}} {{app.user.nom|first|upper}}</span><span class="caret"></span>
+                        </a>
+                          
+                          <ul class="dropdown-menu niveau2">
+                              <li class="first dropdown_menu"><a href="{{path('profil_PresentezVous')}}"><i class="fa fa-user"></i> MON PROFIL</a></li>
+                              <li class="dropdown_menu"><a href="{{path('profil_AdressePostal')}}"><i class="fa fa-star"></i> MES ADRESSES</a></li>
+                              <li class="dropdown_menu"><a href="{{path('covoiturage')}}"><i class="fa fa-map"></i> MES TRAJETS</a></li>
+                              <li class="dropdown_menu"><a href="#"><i class="fa fa-car"></i> MON VEHICULE</a></li>
+                              <li class="dropdown_menu"><a href="{{path('profil_UpdatePreferences')}}"><i class="fa fa-heart"></i> MES PRÉFÉRENCES</a></li>
+                              <li class="dropdown_menu"><a href="{{path('comment')}}"><i class="fa fa-thumbs-up"></i> MES COMMENTAIRES</a></li>            
+                              <li class="dropdown_menu"><a href="{{path('covoiturage')}}"><i class="fa fa-eur"></i> Mon Historique</a></li>
+                              {% if is_granted('ROLE_ADMIN') %}
+                                <li class="dropdown_menu"><a href="/admin"><i class="fas fa-user-cog" style="font-size:15px;"></i>Espace Administration</a></li>
+                              {% endif %}
+                              <li class="dropdown_menu"><a href="{{path('security_logout')}}"><i class="fa fa-power-off"></i> DÉCONNEXION</a></li>
+                          </ul>
+                      </li>
+                    {% endif %}
+                </ul>
+            </nav>
+         </div>
+      </div>
+    </header>
+           <!--  Form Login-->
+               <div class="modal fade"  id="loginModal">
+                  
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-titre"><span>Connexion</span> à votre compte</h2>
+                      
+                      </div>
+                      
+
+                    <form action="{{path('security_login')}}" method="post">
+                      
+                      <div class="modal-body">
+                          <div class="inscrit text-right">
+                            <a href="{{path('security_registration')}}" >Pas encore inscrit ?</a>
+                          </div>
+                        <div class="form-group">
+                          <input type="text" name="_username" required class="form-control" placeholder="Email">
+                        </div>
+                          <div class="mdp text-right">
+                            <a href="#">Mot de passe oublié ?</a>
+                          </div>
+                        <div class="form-group">
+                         <input type="password" name="_password" required class="form-control" placeholder="Votre mot de passe">
+                        </div>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Connexion</button>
+                      </div>
+                    </form>
+
+                    </div>
+                  </div>
+                </div>
+           <!-- /Form Login-->
+           <!-- Script General-->
+                <script src="{{asset('js/vendors/jquery-3.4.1.min.js')}}"></script>
+                <script src="{{asset('js/vendors/bootstrap.js')}}"></script>
+                <script src="{{asset('js/main.js')}}"></script>
+
+            <!-- /Script General-->
+
+        
+        {% block body %}{% endblock %}
+
+
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

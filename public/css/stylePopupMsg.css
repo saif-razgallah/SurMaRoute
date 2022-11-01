@@ -1,0 +1,18 @@
+.modal-header,.modal-body,.modal-footer{
+    background-color: white;
+}
+
+.modal-footer .btn-default {
+	background-color: white;
+	border: 1px solid #989898; /* Green */
+}
+
+
+.modal-footer .btn-default {
+  transition-duration: 0.4s;
+}
+
+.modal-footer .btn-default:hover {
+  background-color: #D0D0D0; /* Green */
+  color: white;
+}

@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+  <link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+{% endblock %}
+
+{% block body %}
+
+  <div class="espace"></div>
+
+  <div class="container">
+            <div class="intro-text">
+                <h1 class="intro-heading">Inscrivez vous</h1>
+                <br/>
+            
+            <div class="col-sm-8 col-sm-offset-2">    
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong> Créer votre compte utilisateur </strong>
+          </div>
+          <div class="panel-body">
+              <br>
+               {{form_start(form)}}
+
+               <!-- First name -->
+              <div class="form-group has-feedback">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  {{ form_widget(form.prenom, {'attr': {'placeholder': 'Prénom'}}) }}
+                  
+                  </div>
+
+              </div>
+
+
+              <!-- Last name -->
+              <div class="form-group has-feedback">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              
+                  {{ form_widget(form.nom, {'attr': {'placeholder': 'Nom'}}) }}
+                  
+                  </div>
+                
+              </div>
+
+              
+              <!-- Email adress -->
+              <div class="form-group has-feedback">
+                <div class="input-group">
+                  <span class="input-group-addon">@</span>
+                  {{ form_widget(form.email, {'attr': {'placeholder': 'Email'}}) }}
+                  
+                  </div>
+              </div>
+          
+              <!-- Phone -->
+              <div class="form-group has-feedback">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                  <span class="input-group-addon">+216</span>
+                  {{ form_widget(form.telephone, {'attr': {'placeholder': 'Téléphone'}}) }}
+                
+                  </div>
+                  
+              </div>
+                          
+              
+              
+              <!-- Password -->
+              <div class="form-group has-feedback">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                  {{ form_widget(form.password, {'attr': {'placeholder': 'Votre mot de passe'}}) }}
+                  
+                  </div>
+              </div>
+          
+              
+              <!-- Confirm password -->
+              <div class="form-group has-feedback">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                
+                    {{ form_widget(form.confirm_password, {'attr': {'placeholder': 'Confirmer le mot de passe'}}) }}
+                    
+                  </div>
+          
+              </div>
+              
+              <!-- GCaptcha -->
+              <div class="form-group captcha">
+                <div class="input-group center-block" style="width: 50%;display: block;">
+                  <label for="exampleCaptcha">Are you a robot</label>
+                  {{ form_widget(form.captchaCode,{'attr':{'class':'form-control'}}) }}
+                  </div>                  
+              </div>
+              
+              <!-- Message Errors-->  
+              {% set formErrors = form.vars.errors.form.getErrors(true) %}
+
+              {% if formErrors|length %}  
+                <div class="alert alert-danger">
+                  <ul>
+                    {% for error in formErrors %}
+                      <li> {{ error.message}}</li>
+                    {% endfor %}  
+                  </ul>
+                </div>
+              {% endif %}
+              <!-- Button --> 
+              <div class="form-group ">
+                <input id="submitForm" type="submit" value="Créer mon compte" class="btn btn-success btn-block"></input>
+              </div>
+                
+              {{ form_widget(form._token) }} <!-- render the CSRF Token-->
+              {{ form_end(form,{'render_rest': false})}} <!-- do not render anything else-->
+
+            
+          </div>
+  
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+{{include('footer/footer.html.twig')}}
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends 'profil.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+{% endblock %}
+
+{% block conat %}
+
+					
+
+					<!-- Message Errors-->	
+						{{include('profil/ScriptMsg.html.twig')}}
+
+					 
+					<!-- Update personal data --> 
+		            	<div class="col-md-12 offset-0">
+		            		            	
+			            	<div class="panel panel-default">
+			            	
+				            	<div class="panel-heading"><h6 class="panel-title">Présentation utilisateur : Parlez nous un peu de vous</h6>
+				            	</div>
+								
+									<div class="panel-body" style="padding : 30px 30px 30px 30px;">					
+									{{form_start(form)}}	          							            
+	
+										<div id="userIntroductionContainer" class="form-group">
+											<div class="input-group">
+
+											 {{ form_widget(form.presentez_vous, {'attr':{'placeholder':'Parlez-nous un peu de vous ... '}})}}
+
+											 
+											  <div class="input-group-addon"></div>
+											</div>
+										</div>
+										
+									</div>
+									
+									<!-- Button -->	
+											<div class="panel-footer text-center">
+												<input id="submitForm" type="submit" value="Editer" class="btn btn-success"></input>
+											</div>
+											
+									{{ form_widget(form._token) }} <!-- render the CSRF Token-->
+									{{ form_end(form,{'render_rest': false})}}
+									
+							</div>
+						
+						</div>
+										
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}	

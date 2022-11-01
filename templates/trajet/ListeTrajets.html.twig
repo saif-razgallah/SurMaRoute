@@ -1,0 +1,63 @@
+{% extends 'profil.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+{% endblock %}
+
+{% block conat %}
+
+	<div class="col-md-12 offset-0">
+
+		<h2> Mes Trajets</h2>
+
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Ville de départ</th>
+					<th>Ville d'arrivée</th>
+					<th>Date de départ</th>
+					<th>Action</th>
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+			{% for trajet in trajets %}
+				<tr>
+					<td>{{trajet.typeUtilisateur}}</td>
+					<td>{{trajet.villedepart}}</td>
+					<td>{{trajet.villearrivee}}</td>
+					<td>{{trajet.datedepart ?trajet.datedepart|date('Y-m-d')}}</td>
+					<td>
+					<a href="{{path('trajet.edit',{id: trajet.id})}}" class="btn btn-success">Editer</a>
+						<form method="post" action="{{path('trajet.delete',{id: trajet.id})}}" style="display: inline-block" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?')">
+							<input type="hidden" name="_method" value="DELETE">
+							<button class="btn btn-danger">Supprimer</button>
+						</form>
+					</td>
+
+					
+				</tr>
+			{% endfor %}
+			
+
+			</tbody>
+
+		</table>
+
+		<div class="text-right">
+				<a href="{{path('trajet.new')}}" class="btn btn-primary">Proposez Votre Trajet</a>
+		</div>
+
+	</div>
+
+{% endblock %}	
+
+{% block javascripts %}
+
+{% endblock %}	

@@ -1,0 +1,316 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style6.css')}}">	
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="espace">
+	
+</div>
+
+<div class="ShowProfil">
+    
+		<div class="container">
+			{% for InfoProfil in InfoProfils %}
+		    <div class="col-md-4">
+		        <div class="panel panel-default">
+		            <div class="panel-heading">
+		                <div class="panel-title">
+		                Activité
+		                </div>
+		            </div>
+		            <div class="panel-body">
+		                <ul style="list-style-type: none; padding-left: 0px">
+		                    <li>
+		                        <i class="fa fa-calendar color-blue"></i>&nbsp;
+		                        Date d'inscription :<br>
+		                        <div style="padding-left: 20px;padding-bottom: 10px">
+		                        {% set startDate = InfoProfil.date_inscription|date('d-M-y H.i.s') %}
+                      
+                      {% set difference = date('now'|date('d-M-y H.i.s',"Europe/Paris") ).diff(date(startDate)) %}
+                      
+                      {% set leftDays = difference.days %}
+             
+                      
+                      {% if  leftDays < 6 %}
+
+                      	 {% if  leftDays == 1 %}
+                          il y a {{leftDays}} jour
+                         {% else %}
+                          il y a {{leftDays}} jours
+                         {% endif %}
+
+                      {% elseif  6 < leftDays and   leftDays < 30     %}
+                      	 {% if  leftDays <  11 %}
+                      	 	{% set semaine = leftDays / 7 %}
+                            il y a {{semaine|round}} semaine
+                         {% else %}
+                      	 	{% set semaine = leftDays / 7 %}
+                         	il y a {{semaine|round}} semaines
+                      {% endif %}  	
+                      {% elseif  29 < leftDays and leftDays < 365 %}   
+                      	 {% set mois = leftDays/30 %}
+                          il y a {{mois|round}} mois
+                      {% else %}
+                      	{% set année = leftDays/365 %}
+                         il y a {{année|round}} ans  
+                      {% endif %}	
+		                        </div>
+		                    </li>
+		                    <li>
+		                       <span class="glyphicon glyphicon-time color-blue"></span>&nbsp;
+		                        Dernière connexion :<br>
+		                        <div style="padding-left: 20px;padding-bottom: 10px">
+					              {% set startDate = InfoProfil.derniere_connexion|date('d-M-y H.i.s') %}
+			                      
+			                      {% set difference = date('now'|date('d-M-y H.i.s',"Africa/Tunis") ).diff(date(startDate)) %}
+			                      
+			                      {% set leftDays = difference.days %}
+			                      {% set leftHours = difference.h %}
+			                      {% set leftMinute = difference.i %}  
+			                      {% set leftSeconde = difference.s %}  
+			                      
+			                      {% if leftDays == 0 and leftHours == 0 and leftMinute == 0 %}
+			                        il y a {{leftSeconde}} secondes
+			                      {% elseif leftDays == 0 and leftHours == 0    %}
+			                        il y a {{leftMinute}} minutes
+			                      {% elseif leftDays == 0 %}   
+			                        il y a {{leftHours}} heures
+			                      {% else %}
+			                        il y a {{leftDays}} jours  
+			                      {% endif %}
+			                 </div>
+		                    </li>
+		                         <li>
+		                        <i class="fa fa-star color-blue"></i>&nbsp;
+		                        Moyenne des avis:<br>
+		                        <div style="padding-left: 20px;padding-bottom: 10px">
+		                        {% set note = 0 %}
+		                        
+		                        {% for avis_user in avis_util %}	
+
+								 {% if avis_user.avis == "A éviter" %}
+									{% set note = note + 1  %}
+								 {% endif %}
+
+								 {% if avis_user.avis == "Décevant" %}
+									{% set note = note + 2 %}
+								 {% endif %}
+
+								 {% if avis_user.avis == "Bien" %}
+ 									{% set note = note + 3  %}
+								 {% endif %}
+
+								 {% if avis_user.avis == "Excellent" %}
+									{% set note = note + 4 %}
+								 {% endif %}
+
+								 {% if avis_user.avis == "Extraordinaire" %}
+									{% set note = note + 5 %}
+								 {% endif %}	
+		                        
+		                    	{% endfor %}
+		                    	{% if note > 0 %}
+				                    	{{ ((note / nbr_avis_util) + 0.0)|number_format(1)}}
+				                    {% else %}
+				                    	{{ (note  + 0.0)|number_format(1)}}
+				                    {% endif %}	
+		                        sur {{nbr_avis_util}} avis
+		                        </div>
+		                    </li>
+		                                        <li>
+		                        <span class="glyphicon glyphicon-bullhorn color-blue"></span>&nbsp;
+		                        Annonces publiées :
+		                        {{nbr_annonce}}
+		                    </li>
+		                </ul>
+		                <button class="btn btn-primary btn-group-justified" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+		                   Numéro de téléphone
+		                   <span class="glyphicon glyphicon-earphone"></span>
+		                </button>
+		                <div class="collapse" id="collapseExample">
+		                <br>
+		                    <div class="text-center alert alert-info">
+		                               {{InfoProfil.telephone}}
+		                    </div>
+		             </div>
+		           </div>
+		        </div>
+		        <div class="panel panel-default">
+		            <div class="panel-heading">
+		                <div class="panel-title">
+		                Avis sur {{InfoProfil.prenom}}
+		                </div>
+		            </div>
+		            <div class="panel-body">
+		            	{% for avis_util in avis_utilisateur %}
+		                <div class="media">
+		                  <div class="media-left">
+		                    <a href="{{ path('search_profil.show', {id: avis_util.noter.id})}}">
+		                      <div class="thumbnail">
+		                      	{% if "{{avis_util.noter.photo}}" == null  %}
+                                  <img class="media-object" src="{{asset('images/search/imgprofil.png')}}">
+                                {% else %}  
+                                   <img class="media-object" src="{{asset('uploads/') ~ avis_util.noter.photo}}">
+                                {% endif %}	
+		                      </div>
+		                    </a>
+		                  </div>
+		                  <div class="media-body">
+		                    <h4 class="media-heading">
+                                <strong class="text-success">{{avis_util.avis}}!</strong>
+                                <br>
+       							 <small> De <strong>{{avis_util.noter.prenom|striptags|title}} {{avis_util.noter.nom|first|upper}}</strong></small>
+		                    </h4>
+		                    {{avis_util.description}}
+		                  </div>
+		                </div>
+		                {% endfor %}
+		            </div>
+		        </div>
+		            </div>
+		    <div class="col-md-8">
+		        <div class="panel panel-default">
+		            <div class="panel-body">
+		                   <div class="col-xs-4">
+		                        <div class="thumbnail">
+		                        {% if "{{trajetInfo.utilisateur.photo}}" == null  %}
+                                  <img class="imge" src="{{asset('images/search/imgprofil.png')}}">
+                                {% else %}  
+                                   <img class="imge" src="{{asset('uploads/') ~ InfoProfil.photo}}">
+                               {% endif %}
+		                       </div>
+		                   </div>
+		                   <div class="col-xs-8">
+		                       <h3>{{InfoProfil.prenom|striptags|title}} {{InfoProfil.nom|striptags|title}}
+		                       	<br>
+		                            <small> {{InfoProfil.sexe|striptags|title}}<br>
+		                           ({{ date('now'|date('d-m-Y')).diff(date(InfoProfil.date_naissance|date('d-m-Y'))).format('%y ans') }})
+		                            </small>
+		                       </h3>
+		                        <table>
+
+		                           <tbody><tr>
+
+		                              <td><h4>Ville:</h4></td>
+		                              <td><h4>{{InfoProfil.profil.ville|striptags|title}}</h4></td>
+
+		                           </tr>
+		                           <tr>
+		                               <td>
+		                                   <h4>
+		                                      Préférences:&nbsp;
+		                                   </h4>
+		                               </td>
+		                               <td>
+						              {% if InfoProfil.profil.musique == '0' %}
+				                         <span class="label label-non">
+										<i class="fa fa-music"></i> Musique</span>
+				                      {% else %}
+				                         <span class="label label-success">
+										<i class="fa fa-music"></i> Musique</span>
+				                      {% endif %}
+
+				                      {% if InfoProfil.profil.animaux == '0' %}
+				                         <span class="label label-non"><i class="fa fa-paw"></i> Animaux</span>
+				                      {% else %}
+				                         <span class="label label-success"><i class="fa fa-paw"></i> Animaux</span> 
+				                      {% endif %}
+
+				                      {% if InfoProfil.profil.discussion == '0' %}
+				                         <span class="label label-non"><i class="fa fa-comments"></i> Discussion</span>
+				                      {% else %}
+				                         <span class="label label-success"><i class="fa fa-comments"></i> Discussion</span> 
+				                      {% endif %} 
+
+				                      {% if InfoProfil.profil.fumeur == '0' %}
+				                         <span class="label label-non"><i class="fa fa-magic"></i> Fumeur</span>
+				                      {% else %}
+				                         <span class="label label-success"><i class="fa fa-magic"></i> Fumeur</span> 
+				                      {% endif %} 	
+									  
+									  
+
+									</td>
+		                           </tr>
+
+		                       </tbody></table>
+		                   </div>
+		                </div>
+		            <div class="panel-body">
+		                <div class="jumbotron" id="jumb">
+		                    <p id="text_jump">
+		                       {{InfoProfil.profil.presentez_vous}}
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="panel panel-info">
+		            <div class="panel-heading">
+		                <h4>
+		                   Laissez un avis sur {{InfoProfil.prenom|striptags|title}}
+		                </h4>
+		            </div>
+		            <div class="panel-body">
+		            	{{form_start(form)}}
+		                <!--form role="form" method="POST" action="#"-->
+		                  <div class="form-group">
+		                    <label class="control-label">Votre avis </label>
+		                    
+							<!--select name="note" data-toggle="select" class="form-control select select-inverse select2-offscreen" tabindex="-1" title="">
+		                           <option value="5">Extraordinaire</option>
+		                           <option value="4" selected="">Excellent</option>
+		                           <option value="3">Bien</option>
+		                           <option value="2">Décevant</option>
+		                           <option value="1">A éviter</option>
+		                        </select-->
+		                       {{ form_widget(form.avis)}} 
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="InputC">Comment trouvez-vous la conduite de {{InfoProfil.prenom|striptags|title}}</label>
+		                        <!--textarea class="form-control" id="InputC" rows="5" style="resize: none" name="avis">bon homme</textarea-->
+		                        {{ form_widget(form.description)}}
+		                    </div>
+		                    <button type="submit" class="btn btn-default">Envoyer</button>
+		                    {{ form_end(form)}}
+		                <!--/form-->
+		            </div>
+		        </div>
+		     </div>
+		</div>
+
+		             
+
+
+			  <div>
+					
+			</div>
+
+		</div>
+
+		{% endfor %}	
+	</div>
+</div>
+
+        <!---->
+		{{include('footer/footer.html.twig')}}
+
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+
+
+{% endblock %}
+

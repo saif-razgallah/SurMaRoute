@@ -1,0 +1,135 @@
+header{
+  background-color: rgb(0,0,0,0.9);
+}
+
+.espace{
+  height:  50px;
+    background-color: #EEE;
+
+}
+
+/* ------------------Show Profil--------------- */
+
+.ShowProfil {
+    padding-top: 90px;
+    background-color: #EEE;
+    line-height: 1.72222;
+    font-size: medium;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #1e375c;
+}
+
+.ShowProfil .panel-info > .panel-heading {
+    color: #ffffff;
+    background-color: #34495e;
+    border-color: #273951;
+    border-radius: inherit;
+}
+
+
+.ShowProfil .panel {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+}
+
+.ShowProfil .panel-default {
+  border-color: #dddddd;
+
+}
+/*********************/
+
+.panel-default .jumbotron p {
+    margin: 0 0 15px;
+    font-size: 16px;
+    line-height: 1.72222;
+}
+
+
+#jumb {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+
+
+.ShowProfil h3{
+    font-size: 20px;
+    line-height: 1.72222;
+    color: #34495e;
+        font-size: 1.17em;
+    font-weight: 700;
+
+}
+
+.ShowProfil h4{
+	font-family: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+    font-size: 16px;
+}
+
+.ShowProfil small{
+	color: #1abb9b;
+	font-size: 83%;
+    line-height: 2.067;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.panel-body li{
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+
+}
+
+
+
+/**/
+
+
+.ShowProfil .select-inverse  {
+    color: #fff;
+    background-color: #34495e;
+}
+
+.ShowProfil .btn-default {
+    color: #fff;
+    background-color: #bdc3c7;
+}
+
+.media .thumbnail {
+  width: 70px;
+  border: 2px solid #bdc3c7;
+}
+
+
+.ShowProfil .thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 5px;
+  line-height: 1.72222;
+  background-color: #fff;
+  border: 2px solid #bdc3c7;
+  border-radius: 6px;
+  
+}
+
+
+.label-non {
+    background-color: #5cB85C;
+    text-decoration-line: line-through;
+    text-decoration-color: red;
+}
+

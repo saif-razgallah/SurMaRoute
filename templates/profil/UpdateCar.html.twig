@@ -1,0 +1,129 @@
+{% extends 'profil.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+{% endblock %}
+
+{% block conat %}
+
+	<!-- profil -->
+
+					 <!-- Message Errors-->	
+						{{include('profil/ScriptMsg.html.twig')}}
+						
+
+
+						 <!-- Update vehicle data --> 
+		            	<div class="col-md-12 offset-0">
+		            		            	
+			            	<div class="panel panel-default">
+			            	
+			            		<div class="panel-heading"><h6 class="panel-title">Changer les données de votre véhicule</h6></div>
+
+								
+								<div class="panel-body" style="padding : 30px 30px 30px 30px;">						          							            									
+								{{form_start(form)}}
+
+								<!-- Car brand -->
+								<div class="form-group">
+									<label class="sr-only" for="carBrand"></label>
+									<div class="input-group">
+
+									  {{ form_widget(form.marque_voiture, {'attr':{'placeholder':'Marque de voiture'}})}}
+
+									  <div class="input-group-addon"><i class="fa fa-car"></i></div>
+									</div>
+								</div>
+								
+								
+								<!-- Car Model -->
+								<div class="form-group">
+									<label class="sr-only" for="carModel"></label>
+									<div class="input-group">
+
+									  {{ form_widget(form.modele_voiture, {'attr':{'placeholder':'Modéle de voiture'}})}}
+
+									  <div class="input-group-addon"><i class="fa fa-car"></i></div>
+									</div>
+								</div>
+								
+
+								<!-- Manufacturing Year -->
+								<div class="form-group">
+									<label class="sr-only" for="carYear"></label>
+									<div class="input-group">
+									  
+									  {{ form_widget(form.date_circulation, {'attr':{'placeholder':'Année de mise en circulation'}})}}
+
+									  <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+									</div>
+								</div>
+								
+								<!--Car Color -->
+								<div class="form-group">
+									<label class="sr-only" for="carColor"></label>
+									<div class="input-group">
+									  
+									  {{ form_widget(form.couleur_voiture, {'attr':{'placeholder':'Couleur de la voiture (facultatif)'}})}}
+									  <div class="input-group-addon"><i class="fa fa-dot-circle-o"></i></div>
+									</div>
+								</div>
+								
+								<!--Car registration -->
+								<div class="form-group">
+									<label class="sr-only" for="carRegistrationNb"></label>
+									<div class="input-group">
+									  
+									   {{ form_widget(form.immatriculation_voiture, {'attr':{'placeholder':"Numéro d'immatriculation (facultatif)"}})}}
+
+									  <div class="input-group-addon"><i class="fa fa-bars"></i></div>
+									</div>
+								</div>
+								
+								<!-- Comfort level -->
+								<div class="form-group">
+									<label class="sr-only" for="carLevel"></label>
+									<div class="input-group">
+									  
+									   {{ form_widget(form.niveau_confort, {'attr':{'placeholder':'Niveau de confort'}})}}
+									   
+									  <div class="input-group-addon"><i class="fa fa-bars"></i></div>
+									</div>
+								</div>
+							    
+							    
+								</div>
+									
+									<!-- Button -->	
+											<div class="panel-footer text-center">
+												<input id="submitForm" type="submit" value="Editer" class="btn btn-success"></input>
+											</div>
+											
+									{{ form_widget(form._token) }} <!-- render the CSRF Token-->
+									{{ form_end(form,{'render_rest': false})}}	
+								
+							
+									
+							</div>
+						
+						</div>
+						
+		            
+
+
+
+
+		            		
+						
+
+	<!-- /profil -->
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}	

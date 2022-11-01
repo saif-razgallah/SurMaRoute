@@ -1,0 +1,484 @@
+/* Header */
+
+header{
+  background-color: rgb(0,0,0,0.9);
+}
+
+.espace{
+	height:  90px;
+    background-color: #ffffff;
+
+}
+
+/* partie Search*/
+
+
+/* Background*/
+.container_searchTrajet
+{
+
+	background: url("../img/gradient_texture.png") repeat scroll 0 0 #E6E6E6;
+	font-family : "Helvetica",Arial,Verdana,sans-serif;
+	color : #181818;
+	text-shadow: 0 1px 1px #FFFFFF;
+	margin : 0px;
+	padding: 0px;
+	margin: 0 auto;
+
+}
+
+/* block rechercher*/
+.bloc_page_load
+{	
+	margin : auto;
+	height: auto;
+	padding-top : 15px;
+	padding-bottom : 15px;
+	margin-bottom : 30px;
+	margin-left : auto;
+	margin-right : auto;
+	background-color:#ffffff;
+	border-radius : 6px 6px 0px 0px;
+	border-bottom:1px solid #cdcaca;
+
+}
+
+
+/* block rechercher blanc*/
+
+.bloc_page_bodyy
+{	
+	width : 980px;
+	margin : auto;
+	height: auto;
+	border : 1px #c8c8c8 solid;
+	border-radius : 6px;
+	margin-bottom : 8px;
+	margin-bottom : 25px;
+	padding-bottom : 25px;
+		
+}
+
+/* block rechercher margin*/
+
+.n10load
+{
+	width : 900px;
+	margin : auto;
+	height :auto;
+}
+
+.nouveau101
+{
+	width : 700px;
+	margin : auto;
+	height :auto;
+	margin-bottom : 20px;
+
+}
+
+/* Titre */
+.nouveau101 h3
+{
+	font-family : "Pacifico","Helvetica",Arial,Verdana,sans-serif;
+	margin : 0px;
+	color : #666666;
+	font-size : 2.4em;
+	text-shadow: 0 1px #FFFFFF;
+	text-align : center;
+	font-weight: 900;	
+}
+
+/* block ville depart et ville d'arrivé*/
+
+.mrr44
+{
+	display : inline-block;
+	width : auto;
+	margin : auto;
+	height : auto;
+	vertical-align : top;
+	overflow:hidden; 
+	width: 250px;
+	border-radius: 3px;
+}
+
+.mrch
+{
+	display:inline-block;
+	vertical-align:top;
+	padding-left:3px;
+	padding-right:7px;
+	border-right:1px solid #cdcaca;
+	height:21px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-top:2px;
+}
+
+
+
+/* margin entre block title et les cards*/
+.mr74
+{
+	display : block;
+	width : auto;
+	margin : auto;
+	height : auto;
+	text-align : center;
+	overflow:hidden;
+}	
+
+/* Button rechercher*/
+.trouvezo
+{
+	
+	border : 0 none;
+	border-radius : 3px 3px 3px 3px;
+	color : #ffffff;
+	cursor : pointer;
+	font-size : 15px;
+	padding : 8px 14px;
+	background-color :#4787ED;
+	border : 1px solid #3079ED;
+	text-shadow : 1px 1px 1px #00739e;
+	font-weight : bold;
+	font-family : "Helvetica",Arial,Verdana,sans-serif;
+	margin : 0px;
+}
+
+/* Section card urgent*/
+.sectionn
+{
+	width : 750px;
+	margin : auto;
+	height : auto;
+	border : 1px #CDCACA solid;
+	margin-top:20px;
+	text-shadow: 0 1px #FFFFFF;
+	background-color : #ffffff;
+	font-family : "Helvetica",Arial,Verdana,sans-serif;
+	overflow: hidden;
+	position:relative;
+	border-radius : 5px 5px 5px 5px;
+
+}
+
+
+.sectionn .choirc1 a,.sectionn .rc a
+{
+	text-decoration : none; 
+	margin : 0px;
+	padding : 0px;
+}
+
+
+
+/* margin chercher*/
+
+.loadl
+{
+
+	text-align: center;
+
+}
+
+.navigation
+{
+	text-align: center;
+}
+
+
+/* position card*/
+.rc
+{
+	margin-top : 5px;
+	margin-right : 0px;
+	margin-bottom : 5px;
+	display : inline-block;
+	width :52%;
+}
+
+
+/* card ville*/
+.nouveau1
+{
+	display : block;
+	margin : 5px;
+
+}
+.nouvie1
+{
+	display : inline-block;
+	vertical-align : top;
+	text-align: left;
+	font-size: 16px;
+	
+}
+.nouvie2
+{
+	display : inline-block;
+	width : 30px;
+	height : 30px;
+	vertical-align : top;
+	text-align: left;
+
+	
+}
+
+/* fleche */
+.nouveau1 p 
+{
+	margin : 5px;
+	color : #555555;
+	margin-right:0px;
+	margin-left:0px;
+
+}
+
+.nouveau2
+{
+	display : block;
+	margin : 5px;
+	margin-left:10px;
+	font-size: 16px;
+}
+
+
+.choirc
+{
+	display : inline-block;
+	margin-top : 5px;
+	vertical-align : top;
+	margin-bottom : 5px;
+	height : auto;
+	width : 17%;
+	text-align : normal;
+	float : right;
+	font-size: 16px;
+}
+.choirc1
+{
+	display : inline-block;
+	margin-top : 5px;
+	margin-left : 5px;
+	margin-bottom : 5px;
+	vertical-align : top;
+	height : auto;
+	width : 29%;
+	border-right: 1px solid #DCDEDE;
+	min-height:150px;
+}
+
+/* img position*/
+.nouvie3
+{
+	display : inline-block;
+	width : 80px;
+	height : 80px;
+	vertical-align : top;
+	background-color: #F6F6F6;
+    border: 1px solid #e3e3e3;
+	overflow:hidden;
+	border-radius: 50px;
+	
+	
+}
+
+.nouvie3 img
+{
+	width:80px;
+	height : 80px;	
+	
+}
+
+
+.prixnuit
+
+{
+	vertical-align : top;
+	display:inline-block;
+	padding : 10px;
+	font-size : 1.37em;
+	font-weight : bold;
+	color: #555555;
+	margin: auto;
+	padding : 2px;
+	text-align :center;
+	margin : 5px;
+	font-family : Arial,Verdana,sans-serif;
+	width:100px;
+	overflow:hidden;
+	text-align:center;
+	line-height: 1.1em;
+
+}
+
+.Star{
+	font-size : 1em;
+	color: #0708C91;
+	
+}
+
+.prixnuit2
+
+{
+	vertical-align : top;
+	display:inline-block;
+	padding : 10px;
+	font-size : 1.15em;
+	font-weight : bold;
+	color: #b5b5b5;
+	margin: auto;
+	padding : 2px;
+	text-align :center;
+	margin : 5px;
+	font-family : Arial,Verdana,sans-serif;
+	width:130px;
+	overflow:hidden;
+	text-align:left;
+
+}
+
+
+/* margin entre nbr place et prix */
+.prixnuito
+
+{
+	color : #333333;
+	margin: auto;
+	padding : 2px;
+	text-align :center;
+	margin : 0px;
+	text-decoration : none;
+}
+
+.prixnuito strong{
+	color : #438BC5;
+}
+
+.detrc1 strong{
+	
+	color : #438BC5;
+}
+/* ici probleme de span*/
+
+.prixnuit span
+
+{
+	font-size : 0.80em;
+	font-family : "Helvetica",Arial,Verdana,sans-serif;
+
+}
+
+.nouveau101 span{
+	font-family: "Helvetica",Arial,Verdana,sans-serif;
+	font-size : 1.5em;
+	font-weight: bold;
+}
+
+.detrc
+{
+	display : block;
+	border-radius : 3px;
+	margin:5px;
+	margin-bottom : 5px;
+	height : auto;
+	width : auto;
+
+}
+.detrc p
+{
+	margin :0px;
+	font-weight:normal;	
+}
+
+/* label age et vehicule*/
+.destrcco
+{
+	margin :auto;
+	display : block;
+	font-weight : bold;
+	color :#555555;
+	font-size:0.95em;
+	/*opacity : 0.9;*/
+	margin : 5px;
+}
+
+/* cadre préférence*/
+.opicon
+{
+	margin :auto;
+	display : block;
+	color :#555555;
+	font-size:0.8em;
+	border : 1px solid #e3e3e3;
+	margin : 5px;
+	width:auto;
+	text-align : center;
+	height : 30px;
+	position:absolute;
+	bottom:5px;
+	left:5px;
+	width:180px;
+}
+
+.detrc1
+{
+	display : block;
+	margin:5px;
+	margin-bottom : 5px;
+	height : auto;
+	width : auto;
+	text-align : center;
+}
+
+
+.detrc1 p
+{
+	margin :0px;
+}
+
+
+
+.detrc1p p
+{
+	margin :0px;
+	font-weight : bold;
+	color :#e1458e;
+	font-size : 1.1em;
+	line-height: 1.38;
+	
+	
+}
+
+article
+{
+	display :block;
+	width : auto;
+	margin : 5px;
+	border-radius : 3px;
+}
+
+
+article h1
+{
+	font-size : 1em;
+	color : #555555;
+	font-weight : bold;
+	margin: 0px;
+	padding : 0px;
+	margin-bottom : 5px;
+	line-height:16px;
+}
+
+article p
+{
+	color: #666666;
+    margin-top: 0.5em;
+	margin: 0px;
+	padding : 0px;
+	text-align : justify;
+	font-size : 0.8em;
+	margin-bottom : 5px;
+}

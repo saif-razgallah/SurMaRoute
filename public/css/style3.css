@@ -1,0 +1,383 @@
+/* Header */
+
+header{
+  background-color: rgb(0,0,0,0.9);
+}
+
+.espace{
+	height:  80px;
+    background-color: #ffffff;
+
+}
+
+/*  Maps */
+
+
+ /*.leaflet-marker-icon{ visibility:hidden; }*/
+
+.leaflet-marker-draggable{
+	visibility:hidden;
+}
+
+
+/* Page NewTrajet.html.twig */
+
+html,body,div
+{
+	/*margin:0;
+	padding:0;*/
+	border:0;
+	/*font:inherit;
+	font-size:100%;
+	vertical-align:baseline;*/
+
+}
+
+
+/* Position*/
+#Content_wrapper{
+	position:relative;
+	height:85%;
+	margin-top:0px;
+	font-family: source_sans_proregular, "Trebuchet MS", Arial;
+	}
+
+/* Container*/
+#Content_wrapper.container
+{
+	top:5px;
+	min-height:760px;
+	height:auto;
+	padding-bottom:135px
+}
+
+/*titre_externe */
+#Content_wrapper .titre_externe{
+	font-size:34px;
+	font-weight:normal;
+	margin-bottom:30px;
+	color:#1F1F1F;
+	letter-spacing: -0.02em;
+
+	}
+.text-bold-900 {
+    font-weight: 900;
+}
+
+/* sous_titre_externe*/
+#Content_wrapper .sous_titre_externe{
+	font-size:22.5px;
+	margin:-24px 0 36px 0;
+	color: #1F1F1F;
+	}
+
+#cadre{
+	padding-top:15px
+}
+
+/* color footer*/
+.clear{clear:both}
+
+
+
+
+#recherche-avancee #ChmpAdresseDepart,#recherche-avancee 
+#ChmpAdresseArrivee{
+	height:40px;
+	border-right:0 none;
+	padding:0px 0px 0px 10px
+	}
+
+/*Footer*/
+#recherche-avancee .valider{
+	background-color:#96cd5a;
+	box-sizing:border-box !important;
+	border:1px solid transparent !important;
+	border-radius:0px 0px 6px 6px !
+    important;padding:15px
+	}
+/* Button Rechercher*/
+#recherche-avancee .valider .btn-custom{
+	background:none !important;
+	color:white;
+	font-weight:bold;
+	text-alig:right;
+	border:1px white solid;
+	width:auto !important;
+	display:inline !important
+	}
+
+
+
+/* icone img*/
+#recherche-avancee .date_trajet img,
+#trajets-liste .date_trajet img{width:18px;height:18px;vertical-align:middle}
+
+/* Partie Maps*/
+#recherche-avancee .bg_clair
+{
+	background-color:#F3EFEF;
+	border-radius:3px;
+	width:390px;
+}
+
+/* Titre1 Map*/
+#recherche-avancee .map_column .titre_map,
+#trajets-liste .map_column .titre_map{font-size:20px}
+
+/* Titre 2 Map*/
+#recherche-avancee .map_column .info_trajet,
+.map_column .info_trajet{
+	font-size:18px;
+	color:#96cd5a;
+	font-weight:600;
+	
+	
+}
+
+#recherche-avancee .map_column .trajet_info{
+	font:  "Trebuchet MS";
+	color:#1F1F1F;
+	background-color:#f3efef;
+	padding-bottom:5px;
+}
+
+
+/* Font Tous Les Labels*/
+#recherche-avancee label,
+#trajets-liste label{
+	color:#1F1F1F;
+	font-weight:normal;
+	text-align:right
+}
+
+
+
+/* Background partie gauche*/
+.bg_claire{
+	background-color:#f3efef;
+
+}
+
+
+/* Esapacement Label*/
+.MT2{margin-top:2px}
+
+.MT5{margin-top:5px}
+
+.MT20{
+	margin-top:20px	}
+.MT21{
+	margin-top:8px	
+}	
+
+.pad0{padding:0}
+
+.padB15{padding-bottom:15px}
+.padB30{padding-bottom:30px}
+
+.padT15{padding-top:15px;
+}
+
+.padT30{padding-top:30px}
+											
+.padR30{padding-right:30px}
+.padL0{padding-left:0px}
+.padL1{padding-left:1px}
+
+/* Maps*/
+.padL15{padding-left:15px;
+/*padding-bottom:20px;*/
+		}
+.padT1{padding-top:1px}
+																										
+
+
+/* Decoration barre départ Blanc*/
+.input-group-addon{
+  background-color:#FFFFFF !important;
+  border:1px solid #ccc ! important
+  }
+
+#Content_wrapper.container{top:105px}
+
+
+
+#recherche-avancee .border_bot {
+    border-style: dashed;
+}
+
+.border_bot {
+    border-bottom: 1px solid white;
+}
+
+
+/* ----------------------------Nouveau*-------------------------*/
+
+.radio-inline {
+	padding-top:15px;
+	margin-left:0px;
+	width:150px;
+}
+.BtnRadio {
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+/* Hide the browser's default radio button */
+.BtnRadio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  
+}
+
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #C0C0C0;
+  
+  
+  
+}
+
+/* When the radio button is checked, add a blue background */
+.BtnRadio input:checked ~ .checkmark {
+  background-color: #96CD5A;
+  
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.BtnRadio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.BtnRadio .checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+
+/* -------------------------Custom Checkboxes-------------------------------- */
+
+/* The container */
+.BtnCheckbox {
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+}
+
+
+/* Hide the browser's default checkbox */
+.BtnCheckbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmarkk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+  border: 1px solid #C0C0C0;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+.BtnCheckbox input:checked ~ .checkmarkk {
+  background-color: #96CD5A;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmarkk:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.BtnCheckbox input:checked ~ .checkmarkk:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.BtnCheckbox .checkmarkk:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.text-bold-600,.text-bold{
+  font-weight: 600;
+	
+}
+
+
+	
+.acceptation-publication,.publication-button-container{	
+	font-family: "Trebuchet MS";
+	color:#1F1F1F;
+}
+
+/* Auto Complete */
+
+.autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            /*position the autocomplete items to be the same width as the container:*/
+            top: 100%;
+            left: 0;
+            right: 0;
+        }
+
+.autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+            background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+            background-color: DodgerBlue !important;
+            color: #ffffff;
+        }

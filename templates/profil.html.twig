@@ -1,0 +1,235 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+
+{% endblock %}
+
+
+{% block body %}
+
+      <section>
+
+	      <div class="user-profile">	      
+	            
+	            <div class="row">
+	            
+	            
+	        		<div class="col-md-3">
+	                  
+			               <div id="accordion" class="panel-group">
+			               
+				               <div class="panel panel-default facet-panel text-center">
+				                    <div class="panel-heading">
+				                        <h4 class="panel-title">
+				                            Données utilisateur
+				                        </h4>
+				                    </div>
+				                </div>
+		
+				                <div class="panel panel-default facet-panel">
+				                    <div class="panel-heading">
+				                        <h4 class="panel-title">
+				                            <a href="#collapse1" data-toggle="collapse"><span class="fa fa-child facet-icon">
+				                            </span>Profil  <span class="caret pull-right"></span></a>
+				                        </h4>
+				                    </div>
+				                    <div id="collapse1" class="panel-collapse collapse in" >
+				                        	<ul class="starts">
+				                            	<a class="list-group-item {% if app.request.attributes.get('_route') == 'profil_PresentezVous' %}active{% endif %} " href="{{path('profil_PresentezVous')}}"><span>Introduction</span> <i class="fa fa fa-commenting-o pull-right"></i></a>
+                                        	</ul>
+				                            <ul class="starts">
+				                            	<a class="list-group-item {% if app.request.attributes.get('_route') == 'profil_util.edit' %}active{% endif %}  " href="{{path('profil_util.edit')}}"><span>Données personnelles</span> <i class="fa fa-user pull-right"></i></a>
+                                        	</ul>
+                                        	<ul class="starts">
+				                            	<a class="list-group-item {{ app.request.get('_route') == 'profil_UpdateCar' ? 'active' }}" href="{{path('profil_UpdateCar')}}" ><span>Données véhicules</span> <i class="fa fa-car pull-right"></i></a>
+                                        	</ul>
+                                        	<ul class="starts">
+				                            	<a class="list-group-item {{ app.request.get('_route') == 'profil_AdressePostal' ? 'active' }}" href="{{path('profil_AdressePostal')}}"><span>Adresse postale</span> <i class="fa fa-home pull-right"></i></a>
+                                        	</ul>
+                                        	<ul class="starts">
+				                            	<a class="list-group-item {{ app.request.get('_route') == 'profil_UpdatePreferences' ? 'active' }}" href="{{path('profil_UpdatePreferences')}}"><span>Préférences</span> <i class="fa fa-clipboard pull-right"></i></a>
+                                        	</ul>
+                                        	<ul class="starts">
+				                            	<a class="list-group-item {{ app.request.get('_route') == 'profil_ReseauSocial' ? 'active' }}" href="{{path('profil_ReseauSocial')}}"><span>Réseaux sociaux</span> <i class="fa fa-twitter pull-right"></i></a>
+                                        	</ul>
+                                        	<ul class="starts">
+				                            	<a class="list-group-item {{ app.request.get('_route') == 'profil_util.password' ? 'active' }}" href="{{path('profil_util.password')}}"><span>Mot de passe</span> <i class="fa fa-lock pull-right"></i></a>
+                                        	</ul>
+				                    </div>
+				                    <script> 
+									</script> 
+				                </div>
+				                
+				                <div class="panel panel-default facet-panel">
+				                    <div class="panel-heading">
+				                        <h4 class="panel-title">
+				                            <a href="{{path('contact')}}"><span class="fa fa-envelope facet-icon">
+				                            </span>Messages</a>
+				                        </h4>
+				                    </div>
+				                </div>
+				                
+				                <div class="panel panel-default facet-panel">
+				                    <div class="panel-heading">
+				                        <h4 class="panel-title">
+				                            <a href="{{path('covoiturage')}}"><span class="fa fa-car facet-icon">
+				                            </span>Covoiturages</a>
+				                        </h4>
+				                    </div>
+				                </div>
+				                
+				                <div class="panel panel-default facet-panel">
+				                    <div class="panel-heading">
+				                        <h4 class="panel-title">
+				                            <a href="{{path('comment')}}"><span class="fa fa-star-half-o facet-icon">
+				                            </span>Commentaires reçus</a>
+				                        </h4>
+				                    </div>
+				                </div>
+		
+			            </div>
+	
+	               </div>
+	               
+	               <div class="col-md-9">
+	               
+	                 <div class="row">
+		                <div class="col-lg-3 col-md-6">
+		                    <div class="panel panel-primary">
+		                        <div class="panel-heading">
+		                            <div class="row">
+		                                <div class="col-xs-3">
+		                                    <i class="fa fa-comments fa-5x"></i>
+		                                </div>
+		                                <div class="col-xs-9 text-right">
+		                                    <div class="huge">{{app.user.commentaires|length}}
+		                                    </div>
+		                                    <div>Commentaires</div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		                <div class="col-lg-3 col-md-6">
+		                    <div class="panel panel-yellow">
+		                        <div class="panel-heading">
+		                            <div class="row">
+		                                <div class="col-xs-3">
+		                                    <i class="fa fa-star fa-5x"></i>
+		                                </div>
+		                                <div class="col-xs-9 text-right">
+		                                    <div class="huge">
+		                                    	{% set note = 0 %}
+												{% for evaluation in app.user.getEstNote() %}
+
+													 {% if evaluation.avis == "A éviter" %}
+														{% set note = note + 1  %}
+													 {% endif %}
+
+													 {% if evaluation.avis == "Décevant" %}
+														{% set note = note + 2 %}
+													 {% endif %}
+
+													 {% if evaluation.avis == "Bien" %}
+					 									{% set note = note + 3  %}
+													 {% endif %}
+
+													 {% if evaluation.avis == "Excellent" %}
+														{% set note = note + 4 %}
+													 {% endif %}
+
+													 {% if evaluation.avis == "Extraordinaire" %}
+														{% set note = note + 5 %}
+													 {% endif %}
+												{% endfor %}	
+													{% if note > 0 %}
+								                    	
+								               {{ ((note / app.user.estNote|length) + 0.0)|number_format(1)}} / 5
+								                    	{% else %}
+								                    	{{ (note  + 0.0)|number_format(1)}} / 5
+								                    {% endif %}	
+		                                    	</div>
+		                                    <div>Evaluation</div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		                <div class="col-lg-3 col-md-6">
+		                    <div class="panel panel-green">
+		                        <div class="panel-heading">
+		                            <div class="row">
+		                                <div class="col-xs-3">
+		                                    <i class="fa fa-car fa-5x"></i>
+		                                </div>
+		                                <div class="col-xs-9 text-right">
+		                                    <div class="huge">{{app.user.trajet|length}}</div>
+		                                    <div>Covoiturages</div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		                <div class="col-lg-3 col-md-6">
+		                    <div class="panel panel-red">
+		                        <div class="panel-heading">
+		                            <div class="row">
+		                                <div class="col-xs-3">
+		                                    <i class="fa fa-users fa-5x"></i>
+		                                </div>
+		                                <div class="col-xs-9 text-right">
+		                                    <div>
+			                                    <span class="huge">
+				                                    {# endDate and startDate are strings or DateTime objects #}
+													{% set difference = date('now'|date('d-m-Y',"Europe/Paris")).diff(date(app.user.dateInscription|date('d-m-Y'))) %}
+													{% set leftDays = difference.days %}
+														
+													{{ leftDays }}
+												</span>
+												 {% if leftDays == 1 %}
+													  Jour
+												 {% else %}
+												 	Jours
+												 {% endif %}
+											</div>
+		                                    <div>Membre depuis</div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		           
+						    
+					{% block conat %}
+									
+	
+						
+					{% endblock %}					 
+
+		            
+    	</section>
+
+{{include('footer/footer.html.twig')}}
+
+
+{% endblock %}					 
+
+
+{% block javascripts %}
+
+   <!--DateTimePicker-->
+    		<script src="{{asset('js/vendors/jquery-ui.min.js')}}"></script>
+            <script src="{{asset('js/main.js')}}"></script>
+
+   <!-- /DateTimePicker-->
+   
+   
+{% endblock %}	

@@ -1,0 +1,79 @@
+{% extends 'profil.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style7.css')}}">
+
+
+{% endblock %}
+
+{% block conat %}
+
+<!-- Message Errors-->	
+
+		
+<!-- *************************************  Liste Messages  *********************************************** -->
+    <div class="covoiturages"> 
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-50"> 
+	                <div class="panel-body">
+	                    <div role="tabpanel" >
+
+
+		                    <!-- Nav tabs -->
+		                    <ul class="nav nav-tabs" role="tablist">
+			                    <li role="presentation" class="active">
+			                    	<a href="#annonce" aria-controls="annonce" role="tab" data-toggle="tab">
+			                    		<h3 style=" margin: 0px">
+			                    			<span class="fa fa-star"></span>
+			                    		 &nbsp
+			                    		  Commentaires reçus</h3></a>
+			                    </li>
+			                    <li role="presentation" class="">
+			                    	<a href="#reservation" aria-controls="reservation" role="tab" data-toggle="tab">
+			                    		<h3 style=" margin: 0px"><span class="fa fa-star"></span>&nbsp Commentaires publiés</h3>
+			                    	</a>
+			                    </li>
+		                    </ul>
+
+
+		                	<!-- Tab panes -->
+					 	    <div class="tab-content">
+									
+								<div role="tabpanel" class="tab-pane active" id="annonce" >
+									
+									{{include('comment/CmtRecus.html.twig')}}
+
+								</div>
+
+								<div role="tabpanel" class="tab-pane" id="reservation">
+
+									{{include('comment/CmtPublie.html.twig')}}
+
+								</div>	
+
+							</div>		
+	                    </div>
+	                </div>
+	        	</div>
+	        </div>
+        </div>
+    </div>
+
+
+
+<!-- **************************************************************************************************-->
+	
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+
+{% endblock %}
+

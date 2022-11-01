@@ -1,0 +1,115 @@
+{% extends 'profil.html.twig' %}
+
+{% block title %}Sur Ma Route{% endblock %}
+
+{% block stylesheets %} 
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+
+{% endblock %}
+
+{% block conat %}
+
+
+					 <!-- Message Errors/Success-->	
+						{{include('profil/ScriptMsg.html.twig')}}
+
+
+
+						<!-- Update  Adressse Postal --> 
+
+		            		<div class="col-md-12 offset-0">
+		            		            	
+			            	  <div class="panel panel-default">
+
+			            	  	  <div class="panel-heading"><h6 class="panel-title">Configurer vos préférences lors de vos covoiturages</h6></div>
+								
+									<div class="panel-body" style="padding : 30px 30px 30px 30px;">	
+
+									{{form_start(form)}}
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="box">
+												<div class="header_box">
+													En ce qui concerne la musique en voiture...				
+													<img class="musique pull-right" src="{{asset('images/profil/music-2-32.png')}}">	
+												</div>
+												<div class="row">
+													<div class="checkbox checkbox-circle col-xs-12">
+														{{ form_widget(form.musique)}}
+													</div>
+												</div>
+												
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="box">
+												<div class="header_box">
+													En ce qui concerne le tabac en voiture...				
+													<img  class="tabac pull-right" src="{{asset('images/profil/smoking-32.png')}}">	
+														
+												</div>
+												<div class="row">
+													<div class="checkbox checkbox-circle col-xs-12">
+														{{ form_widget(form.fumeur)}}
+													</div>
+												</div>
+												
+											</div>
+										</div>
+
+										<div class="col-lg-6">
+											<div class="box">
+												<div class="header_box">
+													En ce qui concerne le bavardage en voiture...													
+													<img class="bavardage pull-right" src="{{asset('images/profil/chat-4-32.png')}}">
+														
+												</div>
+												<div class="row">
+													<div class="checkbox checkbox-circle col-xs-12">
+														{{ form_widget(form.discussion)}}
+													</div>
+												</div>
+												
+											</div>
+										</div>
+
+										<div class="col-lg-6">
+											<div class="box">
+												<div class="header_box">
+													En ce qui concerne les animaux en voiture...			
+													<img class="animaux pull-right" src="{{asset('images/profil/cat-32.png')}}">
+												</div>
+												<div class="row">
+													<div class="checkbox checkbox-circle col-xs-12">
+														{{ form_widget(form.animaux)}}
+													</div>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									
+									</div>
+
+									<!-- Button -->	
+											<div class="panel-footer text-center">
+												<input id="submitForm" type="submit" value="Editer" class="btn btn-success"></input>
+											</div>
+
+									{{ form_widget(form._token) }} <!-- render the CSRF Token-->
+									{{ form_end(form,{'render_rest': false})}}
+							
+								
+							   </div>
+							
+						    </div>
+						
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}	
